@@ -14,17 +14,17 @@ export class ContactRepository {
     return rows;
   }
 
-  async addContact(name: string, email: string, image: string): Promise<Contact> {
+  async addContact(name: string, email: string, image: string, telefone: string): Promise<Contact> {
     const queryText =
-      "INSERT INTO contactos(name, email, image) VALUES($1, $2, $3) RETURNING *";
-    const { rows } = await this.pool.query(queryText, [name, email, image]);
+      "INSERT INTO contactos(name, email, image, telefone) VALUES($1, $2, $3, $4) RETURNING *";
+    const { rows } = await this.pool.query(queryText, [name, email, image, telefone]);
     return rows[0];
   }
 
-  async updateContact(id: number, name: string, email: string, image: string): Promise<Contact> {
+  async updateContact(id: number, name: string, email: string, image: string, telefone: string): Promise<Contact> {
     const queryText =
-      "UPDATE contactos SET name = $1, email = $2, image = $3 WHERE id = $4 RETURNING *";
-    const { rows } = await this.pool.query(queryText, [name, email, image, id]);
+      "UPDATE contactos SET name = $1, email = $2, image = $3, telefone = $4 WHERE id = $5 RETURNING *";
+    const { rows } = await this.pool.query(queryText, [name, email, image, telefone, id]);
 
     if (rows.length === 0) {
       throw new Error(`Contato com ID ${id} não encontrado`);

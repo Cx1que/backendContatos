@@ -14,10 +14,10 @@ export const getContacts = async (req: Request, res: Response): Promise<void> =>
 };
 
 export const postContact = async (req: Request, res: Response): Promise<void> => {
-  const { name, email, image } = req.body;
+  const { name, email, image, telefone } = req.body;
 
   try {
-    const newContact = await contactRepo.addContact(name, email, image);
+    const newContact = await contactRepo.addContact(name, email, image, telefone);
     res.status(201).json(newContact);
   } catch (error) {
     console.error(error);
@@ -27,10 +27,10 @@ export const postContact = async (req: Request, res: Response): Promise<void> =>
 
 export const putContact = async (req: Request, res: Response): Promise<void> => {
   const { id } = req.params;
-  const { name, email, image } = req.body;
+  const { name, email, image, telefone } = req.body;
 
   try {
-    const updatedContact = await contactRepo.updateContact(parseInt(id), name, email, image);
+    const updatedContact = await contactRepo.updateContact(parseInt(id), name, email, image, telefone);
     res.json(updatedContact);
   } catch (error) {
     console.error(error);
