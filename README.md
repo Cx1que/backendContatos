@@ -19,6 +19,9 @@ Abaixo, seguem as URLs para fazer as requisições no banco de dados Postgres, d
 
 ## Exemplo de JSON base
 
++ Para realizar um GET
+
+    + URL base
 
 + Para realizar um POST
 ```
